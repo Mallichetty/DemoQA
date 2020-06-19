@@ -16,16 +16,17 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class Base 
 {
-	WebDriver driver;
+	public  static WebDriver driver;
+	public Properties prop;
 	public WebDriver browserInvocation() throws IOException
 	{
 		
-		Properties prop = new Properties();
+		prop = new Properties();
 		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\resources\\data.properties");
 		
 		prop.load(fis);
 		String browserName= prop.getProperty("Browser");
-		System.out.println("browserName");
+		System.out.println(browserName);
 		
 		if(browserName.equals("Chrome"))
 		{
@@ -52,13 +53,14 @@ public class Base
 		
 	}
 	
+	  
 	
-	
-	public void screenCapture(String testCaseName, WebDriver driver) throws IOException
+	public void screenCapture(String testCaseName) throws IOException
 	{
-		File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		String Destination = System.getProperty("user.dir")+"\\reports\\"+testCaseName+".png";
-		FileUtils.copyFile(src, new File(Destination));
+		TakesScreenshot ts = (TakesScreenshot)driver;
+	    File src = ts.getScreenshotAs(OutputType.FILE);
+		String destinationFile = System.getProperty("user.dir")+"\\reports\\"+testCaseName+".png";
+		FileUtils.copyFile(src, new File(destinationFile));
 		
 	}
 	

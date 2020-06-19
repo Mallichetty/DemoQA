@@ -11,7 +11,9 @@ import resources.Base;
 
 public class listeners implements ITestListener
 {
-
+	
+	Base B = new Base();
+	
 	public void onFinish(ITestContext arg0) {
 		// TODO Auto-generated method stub
 		
@@ -24,27 +26,20 @@ public class listeners implements ITestListener
 
 	public void onTestFailedButWithinSuccessPercentage(ITestResult arg0) {
 		// TODO Auto-generated method stub
-		
+	
 	}
 
 	public void onTestFailure(ITestResult arg0) 
 	{
-		WebDriver driver = null;
-		Base b = new Base();
-		String testCaseName= arg0.getMethod().getMethodName();
+		System.out.println("***** Error "+arg0.getName()+" test has failed *****");
+		String testMethodName= arg0.getMethod().getMethodName();
 		try {
-			driver= (WebDriver)arg0.getTestClass().getRealClass().getDeclaredField("driver").get(arg0.getInstance());
-		} catch (Exception e)
-		{
-		
-		}
-		try {
-			b.screenCapture(testCaseName,driver);
+			B.screenCapture(testMethodName);
 		} catch (IOException e) 
 		{
 			e.printStackTrace();
 		}
-		
+	
 	}
 
 	public void onTestSkipped(ITestResult arg0) {
@@ -60,6 +55,15 @@ public class listeners implements ITestListener
 	public void onTestSuccess(ITestResult arg0) {
 		// TODO Auto-generated method stub
 		
+		System.out.println("***** Success "+arg0.getName()+" test has passed *****");	
+		String testMethodName= arg0.getMethod().getMethodName();
+		try {
+			B.screenCapture(testMethodName);
+		} catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 	}
+
 
 }
