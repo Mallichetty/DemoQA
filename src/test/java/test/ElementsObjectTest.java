@@ -11,39 +11,36 @@ import org.testng.annotations.Test;
 import pageObjects.ElementsObjects;
 import resources.Base;
 
-public class ElementsObjectTest extends Base 
+public class ElementsObjectTest extends Base
 
 {
 	public static Logger log = LogManager.getLogger(Base.class.getName());
+
 	@BeforeTest
-	public void urlLogin() throws IOException
-	{
+	public void urlLogin() throws IOException {
 		driver = browserInvocation();
 		log.info("Driver is invoked");
 		String url = prop.getProperty("URL");
 		System.out.println(url);
 		driver.get(url);
 		log.info("Navigated to given URL");
-		
+
 	}
-	
+
 	@Test
-	public void ElementsClick() throws IOException
-	{
-		
+	public void ElementsClick() throws IOException {
+
 		ElementsObjects EO = new ElementsObjects(driver);
-		
+
 		EO.HomeElementclick().click();
 		log.info("Element clicked");
-		
+
 	}
-	
-	
+
 	@AfterTest
-	public void browserquit()
-	{
+	public void browserquit() {
 		driver.quit();
 		log.info("Browser is closed");
 	}
-	
+
 }
