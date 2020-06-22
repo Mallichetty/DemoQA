@@ -8,6 +8,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import pageObjects.AlertsObject;
 import pageObjects.ElementsObjects;
 import resources.Base;
 
@@ -20,6 +21,7 @@ public class ElementsObjectTest extends Base
 	{
 		driver = browserInvocation();
 		log.info("Driver is invoked");
+		//driver.manage().window().maximize();
 		String url = prop.getProperty("URL");
 		System.out.println(url);
 		driver.get(url);
@@ -27,7 +29,7 @@ public class ElementsObjectTest extends Base
 		
 	}
 	
-	@Test
+	@Test(enabled=false)
 	public void ElementsClick() throws IOException
 	{
 		
@@ -35,14 +37,27 @@ public class ElementsObjectTest extends Base
 		
 		EO.HomeElementclick().click();
 		log.info("Element clicked");
-		
+		EO.Webclick().click();
+		log.info("webelement clicked");
+		EO.getDepartment(); 
+		EO.AddBtnClick().click();
+		EO.fillForm();
 	}
 	
+	@Test
+	public void AlertsClick()
+	{
+		
+		AlertsObject AO = new AlertsObject(driver);
+		AO.sliderclick().click();
+		AO.Webclick1();
+		
+	}
 	
 	@AfterTest
 	public void browserquit()
 	{
-		driver.quit();
+		//driver.quit();
 		log.info("Browser is closed");
 	}
 	
