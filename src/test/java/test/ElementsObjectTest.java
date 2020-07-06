@@ -6,10 +6,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import pageObjects.ElementsObjects;
 import resources.Base;
+
+@Listeners(test.listeners.class)
 
 public class ElementsObjectTest extends Base
 
