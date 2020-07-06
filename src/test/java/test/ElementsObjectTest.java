@@ -18,7 +18,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import com.oracle.tools.packager.Log;
 
 import pageObjects.AlertsObject;
 import pageObjects.ElementsObjects;
@@ -29,7 +28,7 @@ import resources.Base;
 public class ElementsObjectTest extends Base
 
 {
-	public static Logger log = LogManager.getLogger(Base.class.getName());
+	public static Logger log = LogManager.getLogger(ElementsObjectTest.class.getName());
 
 	@BeforeTest
 	public void urlLogin() throws IOException {
@@ -40,14 +39,11 @@ public class ElementsObjectTest extends Base
 		driver.get(url);
 		log.info("Navigated to given URL");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
 	}
 
 	@Test(enabled = true)
 	public void ElementsClick() throws IOException {
-
 		ElementsObjects EO = new ElementsObjects(driver);
-
 		EO.HomeElementclick().click();
 		log.info("Element clicked");
 		EO.Webclick().click();
@@ -71,32 +67,32 @@ public class ElementsObjectTest extends Base
 	public void Forms() throws IOException {
 		FormsObjects FO = new FormsObjects(driver);
 		FO.HomeFormclick().click();
-		Log.info("Navigated to Homescreen");
+		log.info("Navigated to Homescreen");
 		FO.FormClick().click();
-		Log.info("Clicked on form button on home screen");
+		log.info("Clicked on form button on home screen");
 		FO.PracticeFormClick().click();
-		Log.info("Clicked on practice form");
+		log.info("Clicked on practice form");
 		driver.manage().window().maximize();
 		ArrayList<String> values = FO.getData("Name");
 		FO.NameTextBox().sendKeys(values.get(1));
-		Log.info("Added Name");
+		log.info("Added Name");
 		ArrayList<String> values1 = FO.getData("Email");
 		FO.EmailTextBox().sendKeys(values1.get(1));
-		Log.info("Added Email");
+		log.info("Added Email");
 		FO.radioBtn().click();
-		Log.info("Radio Button Clicked");
+		log.info("Radio Button Clicked");
 		boolean Selected = FO.RadioSelectCheck().isSelected();
 		log.info(Selected);
 		ArrayList<String> values2 = FO.getData("Mobile");
 		FO.MobileTextBox().sendKeys(values2.get(1));
-		Log.info("Mobilenumber added");
+		log.info("Mobilenumber added");
 		FO.dobTextBoxClick().click();
 		Select s = new Select(FO.dateSelectClick());
 		s.selectByValue("8");
-		Log.info("Month Selected");
+		log.info("Month Selected");
 		Select s1 = new Select(FO.yearSelectClick());
 		s1.selectByValue("1996");
-		Log.info("Year Selected");
+		log.info("Year Selected");
 		int dayCount = FO.daySelectClick().size();
 		List<WebElement> days = FO.daySelectClick();
 		for (int i = 0; i < dayCount; i++) {
@@ -106,18 +102,18 @@ public class ElementsObjectTest extends Base
 				break;
 			}
 		}
-		Log.info("Date Selected");
+		log.info("Date Selected");
 		ArrayList<String> values3 = FO.getData("Subjects");
 		WebDriverWait ww = new WebDriverWait(driver, 20);
 		ww.until(ExpectedConditions.elementToBeClickable(FO.SubjectBox()));
 		FO.SubjectBox().sendKeys(values3.get(1), Keys.ENTER);
-		Log.info("Subjects Entered");
+		log.info("Subjects Entered");
 		int CheckboxCount = FO.checkSelect().size();
 		List<WebElement> Checkboxes = FO.checkSelect();
 		for (int i = 0; i < CheckboxCount; i++) {
 			Checkboxes.get(i).click();
 		}
-		Log.info("Checkboxes selected");
+		log.info("Checkboxes selected");
 		Actions a = new Actions(driver);
 		a.sendKeys(Keys.PAGE_DOWN).build().perform();
 		ArrayList<String> values4 = FO.getData("Address");

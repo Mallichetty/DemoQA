@@ -14,55 +14,40 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-public class Base 
-{
-	public  static WebDriver driver;
+public class Base {
+	public static WebDriver driver;
 	public Properties prop;
-	public WebDriver browserInvocation() throws IOException
-	{
-		
+
+	public WebDriver browserInvocation() throws IOException {
 		prop = new Properties();
-		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\resources\\data.properties");
-		
+		FileInputStream fis = new FileInputStream(
+				System.getProperty("user.dir") + "\\src\\main\\java\\resources\\data.properties");
+
 		prop.load(fis);
-		String browserName= prop.getProperty("Browser");
+		String browserName = prop.getProperty("Browser");
 		System.out.println(browserName);
-		
-		if(browserName.equals("Chrome"))
-		{
-			System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\chromeDriver.exe" );
-			 driver = new ChromeDriver();
+
+		if (browserName.equals("Chrome")) {
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromeDriver.exe");
+			driver = new ChromeDriver();
 		}
-		
-		else if(browserName.equals("Firefox"))
-		{
-			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\geckodriver.exe");
+
+		else if (browserName.equals("Firefox")) {
+			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "\\geckodriver.exe");
 			driver = new FirefoxDriver();
 		}
-		
-		else
-		{
+
+		else {
 			System.setProperty("webdriver.ie.driver", "");
 			driver = new InternetExplorerDriver();
 		}
-	
-		
-		
 		return driver;
-		
-		
 	}
-	
-	  
-	
-	public void screenCapture(String testCaseName) throws IOException
-	{
-		TakesScreenshot ts = (TakesScreenshot)driver;
-	    File src = ts.getScreenshotAs(OutputType.FILE);
-		String destinationFile = System.getProperty("user.dir")+"\\reports\\"+testCaseName+".png";
+
+	public void screenCapture(String testCaseName) throws IOException {
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File src = ts.getScreenshotAs(OutputType.FILE);
+		String destinationFile = System.getProperty("user.dir") + "\\reports\\" + testCaseName + ".png";
 		FileUtils.copyFile(src, new File(destinationFile));
-		
 	}
-	
-	
 }
