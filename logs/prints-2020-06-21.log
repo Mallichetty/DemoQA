@@ -1,8 +1,0 @@
-16:10:58.523 [main] INFO  resources.Base - Navigated to given URL
-16:10:58.908 [main] INFO  resources.Base - Element clicked
-16:10:59.776 [main] INFO  resources.Base - webelement clicked
-16:11:01.965 [main] INFO  resources.Base - Browser is closed
-16:43:00.992 [main] INFO  resources.Base - Driver is invoked
-16:43:08.519 [main] INFO  resources.Base - Navigated to given URL
-16:43:10.602 [main] INFO  resources.Base - Browser is closed
-16:45:35.772 [main] INFO  resources.Base - Driver is invoked

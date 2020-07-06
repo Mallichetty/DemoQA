@@ -15,6 +15,7 @@ public class ElementsObjects {
 	By addrecordclick = By.id("addNewRecordButton");
 	By columnNameDep = By.xpath("//div[@class='rt-tr']/div[6]");
 	By columnNameAge = By.xpath("//div[@class='rt-tbody']/div/div/div[3]");
+	By homescreenLink = By.xpath("//a[@href= 'https://demoqa.com']");
 
 	public ElementsObjects(WebDriver driver) {
 		this.driver = driver;
@@ -36,7 +37,6 @@ public class ElementsObjects {
 		List<WebElement> columnspy = value.findElements(By.xpath("//div[@class='rt-tbody']/div/div/div[6]"));
 		for (WebElement i : columnspy) {
 			alist.add(i.getText());
-
 		}
 		System.out.println(alist);
 		return alist;
@@ -72,6 +72,11 @@ public class ElementsObjects {
 		driver.findElement(By.xpath("//input[@id='department']")).sendKeys(age.get(2));
 		driver.findElement(By.xpath("//button[@id='submit']")).click();
 	
+	}
+	
+	public WebElement HomePagelink()
+	{
+		return driver.findElement(homescreenLink);
 	}
 
 }
