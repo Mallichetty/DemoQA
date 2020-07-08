@@ -1,6 +1,6 @@
-21:32:34.214 [main] INFO  resources.Base - Browser is closed
-21:33:15.633 [main] INFO  resources.Base - Driver is invoked
-21:33:23.414 [main] INFO  resources.Base - Navigated to given URL
-21:33:23.605 [main] INFO  resources.Base - Element clicked
-21:33:23.606 [main] INFO  resources.Base - ***** Success ElementsClick test has passed *****
-21:33:24.894 [main] INFO  resources.Base - Browser is closed
+22:56:24.083 [main] INFO  test.ElementsObjectTest - Subjects Entered
+22:56:24.442 [main] INFO  test.ElementsObjectTest - Checkboxes selected
+22:56:24.770 [main] INFO  test.ElementsObjectTest - Address entered
+22:56:24.771 [main] INFO  resources.Base - ***** Success Forms test has passed *****
+22:56:25.228 [main] INFO  resources.Base - ***** Success Forms test has passed *****
+22:56:25.588 [main] INFO  test.ElementsObjectTest - Browser is closed
