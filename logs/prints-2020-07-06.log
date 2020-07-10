@@ -1,8 +1,0 @@
-22:56:19.598 [main] INFO  test.ElementsObjectTest - Added Name
-22:56:19.953 [main] INFO  test.ElementsObjectTest - Added Email
-22:56:20.096 [main] INFO  test.ElementsObjectTest - Radio Button Clicked
-22:56:20.158 [main] INFO  test.ElementsObjectTest - true
-22:56:20.465 [main] INFO  test.ElementsObjectTest - Mobilenumber added
-22:56:22.232 [main] INFO  test.ElementsObjectTest - Month Selected
-22:56:22.534 [main] INFO  test.ElementsObjectTest - Year Selected
-22:56:22.877 [main] INFO  test.ElementsObjectTest - Date Selected

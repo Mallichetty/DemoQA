@@ -1,6 +1,0 @@
-22:56:24.083 [main] INFO  test.ElementsObjectTest - Subjects Entered
-22:56:24.442 [main] INFO  test.ElementsObjectTest - Checkboxes selected
-22:56:24.770 [main] INFO  test.ElementsObjectTest - Address entered
-22:56:24.771 [main] INFO  resources.Base - ***** Success Forms test has passed *****
-22:56:25.228 [main] INFO  resources.Base - ***** Success Forms test has passed *****
-22:56:25.588 [main] INFO  test.ElementsObjectTest - Browser is closed

@@ -19,9 +19,10 @@ import org.openqa.selenium.support.FindBy;
 public class FormsObjects {
 	WebDriver driver;
 	By Fclick = By.xpath("//div[@class='category-cards']/div[2]");
-	By Form = By.xpath("//*[text()='Forms']");
+	By Form = By.xpath("//div[text()='Forms']"); 
 	By PracticeForm = By.xpath("//*[text()='Practice Form']");
 	By FirstNameTextBox = By.id("firstName");
+	By LastNameTextBox = By.id("lastName");
 	By EmailTextBox = By.id("userEmail");
 	By SelectRadioBtn = By.xpath("//*[text()='Male']");
 	By selectOption = By.id("gender-radio-1");
@@ -33,8 +34,12 @@ public class FormsObjects {
 	By dayPick = By.xpath("//div[@class='react-datepicker__month']/div/div");
 	By checkBoxClick = By.xpath("//div[contains(@class,'custom-checkbox')]/label");
 	By AddressTextBox = By.cssSelector("[id='currentAddress-wrapper'] div textarea");
-/*	@FindBy(id="currentAddress")
+	/*	@FindBy(css="[id='currentAddress-wrapper'] div textarea")
 	WebElement AddressTextBox;*/
+	By DropdownButton = By.xpath("//div[@class=' css-tlfecz-indicatorContainer']");
+	By DynamicDDState = By.xpath("//input[@id='react-select-3-input']");
+	By DynamicDDCity = By.xpath("//input[@id='react-select-4-input']");
+	By SubmitClick = By.cssSelector("#submit");
 
 	public FormsObjects(WebDriver driver) {
 		this.driver = driver;
@@ -46,7 +51,7 @@ public class FormsObjects {
 
 	public WebElement FormClick() {
 		return driver.findElement(Form);
-	}
+	} 
 
 	public WebElement PracticeFormClick() {
 		return driver.findElement(PracticeForm);
@@ -91,8 +96,13 @@ public class FormsObjects {
 
 	}
 
-	public WebElement NameTextBox() {
+	public WebElement FirstNameTextBox() {
 		return driver.findElement(FirstNameTextBox);
+	}
+	
+	public WebElement LastNameTextBox()
+	{
+		return driver.findElement(LastNameTextBox);
 	}
 
 	public WebElement EmailTextBox() {
@@ -142,4 +152,22 @@ public class FormsObjects {
 		return driver.findElement(AddressTextBox);
 	}
 	
+	public WebElement DDClick()
+	{
+		return driver.findElement(DropdownButton);
+	}
+	public WebElement DynamicDDClick()
+	{
+		return driver.findElement(DynamicDDState);
+	}
+	
+	public WebElement DynamicDDCitySelect()
+	{
+		return driver.findElement(DynamicDDCity);
+	}
+	
+	public WebElement Submission()
+	{
+		return driver.findElement(SubmitClick);
+	}
 }

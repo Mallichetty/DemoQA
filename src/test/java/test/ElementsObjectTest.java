@@ -3,6 +3,7 @@ package test;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
@@ -17,7 +18,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 
 import pageObjects.AlertsObject;
 import pageObjects.ElementsObjects;
@@ -34,19 +34,25 @@ public class ElementsObjectTest extends Base
 	public void urlLogin() throws IOException {
 		driver = browserInvocation();
 		log.info("Driver is invoked");
+		driver.manage().window().maximize();
 		String url = prop.getProperty("URL");
 		System.out.println(url);
 		driver.get(url);
 		log.info("Navigated to given URL");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void ElementsClick() throws IOException {
-		ElementsObjects EO = new ElementsObjects(driver);
+		ElementsObjects EO = new ElementsObjects(driver); 
 		EO.HomeElementclick().click();
 		log.info("Element clicked");
-		EO.Webclick().click();
+		Actions A = new Actions(driver);
+		WebElement element = EO.Webclick();
+		A.moveToElement(element);
+		A.click();
+		A.build().perform();
 		log.info("webelement clicked");
 		EO.getDepartment();
 		EO.AddBtnClick().click();
@@ -54,28 +60,54 @@ public class ElementsObjectTest extends Base
 		EO.HomePagelink().click();
 	}
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void AlertsClick() {
 
 		AlertsObject AO = new AlertsObject(driver);
-		AO.sliderclick().click();
-		AO.Webclick1();
-
+		
+		AO.HomeAlertclick().click();
+		AO.bWindowClick().click();
+		AO.NewTabCLick().click();
+		String current = driver.getWindowHandle();
+		Set<String> handle = driver.getWindowHandles();
+		for (String i : handle)
+		{
+			if(!i.equalsIgnoreCase(current)) 
+			driver.switchTo().window(i);
+		}
+		System.out.println(AO.sampleTabOpen().getText());
+		//driver.close();
+		driver.switchTo().window(current);
+		AO.NewWindowClick();
+		Set<String> handle1 = driver.getWindowHandles();
+		for (String j :handle1)
+		{
+			if(!j.equalsIgnoreCase(current))
+			{
+				driver.switchTo().window(j);
+				driver.manage().window().maximize();
+			}
+		}
+		System.out.println(AO.sampleTabOpen().getText());
+		driver.switchTo().window(current);
+		AO.NewWindowMessageClick();
 	}
 
-	@Test
+	@Test(enabled = false)
 	public void Forms() throws IOException {
 		FormsObjects FO = new FormsObjects(driver);
+		driver.manage().window().maximize();
 		FO.HomeFormclick().click();
 		log.info("Navigated to Homescreen");
 		FO.FormClick().click();
 		log.info("Clicked on form button on home screen");
 		FO.PracticeFormClick().click();
 		log.info("Clicked on practice form");
-		driver.manage().window().maximize();
 		ArrayList<String> values = FO.getData("Name");
-		FO.NameTextBox().sendKeys(values.get(1));
-		log.info("Added Name");
+		FO.FirstNameTextBox().sendKeys(values.get(1));
+		log.info("Added First Name");
+		FO.LastNameTextBox().sendKeys(values.get(2));
+		log.info("Added Last Name");
 		ArrayList<String> values1 = FO.getData("Email");
 		FO.EmailTextBox().sendKeys(values1.get(1));
 		log.info("Added Email");
@@ -119,6 +151,17 @@ public class ElementsObjectTest extends Base
 		ArrayList<String> values4 = FO.getData("Address");
 		FO.Addressclick().sendKeys(values4.get(1)+" , "+values4.get(2));
 		log.info("Address entered");
+		FO.DDClick().click();
+		ww.until(ExpectedConditions.elementToBeClickable(FO.DynamicDDClick()));
+		//FO.selectState();
+		FO.DynamicDDClick().sendKeys("Uttar Pradesh",Keys.ENTER);
+		ww.until(ExpectedConditions.elementToBeClickable(FO.DynamicDDCitySelect()));
+		FO.DynamicDDCitySelect().sendKeys("Agra",Keys.ENTER);
+		log.info("City Selected");
+		FO.Submission().click();
+		log.info("form Submitted");
+		
+		
 	}
 
 	@AfterTest
