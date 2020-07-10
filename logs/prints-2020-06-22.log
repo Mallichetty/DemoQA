@@ -1,0 +1,8 @@
+21:27:32.385 [main] INFO  resources.Base - Driver is invoked
+21:27:36.753 [main] INFO  resources.Base - Navigated to given URL
+21:27:36.926 [main] INFO  resources.Base - Element clicked
+21:27:37.870 [main] INFO  resources.Base - Browser is closed
+21:32:25.766 [main] INFO  resources.Base - Driver is invoked
+21:32:32.696 [main] INFO  resources.Base - Navigated to given URL
+21:32:32.847 [main] INFO  resources.Base - Element clicked
+21:32:32.848 [main] INFO  resources.Base - ***** Success ElementsClick test has passed *****

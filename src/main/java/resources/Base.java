@@ -19,7 +19,6 @@ public class Base {
 	public Properties prop;
 
 	public WebDriver browserInvocation() throws IOException {
-
 		prop = new Properties();
 		FileInputStream fis = new FileInputStream(
 				System.getProperty("user.dir") + "\\src\\main\\java\\resources\\data.properties");
@@ -42,9 +41,6 @@ public class Base {
 			System.setProperty("webdriver.ie.driver", "");
 			driver = new InternetExplorerDriver();
 		}
-
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
 		return driver;
 	}
 
@@ -54,5 +50,4 @@ public class Base {
 		String destinationFile = System.getProperty("user.dir") + "\\reports\\" + testCaseName + ".png";
 		FileUtils.copyFile(src, new File(destinationFile));
 	}
-
 }
