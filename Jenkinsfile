@@ -10,8 +10,6 @@ pipeline
                 mvn compile
             	}
              }
-          }
-    stages {
         stage('Test') 
 	     {
             steps 
@@ -19,8 +17,6 @@ pipeline
                 bat 'mvn test'
             	}
              }
-          }
-   stages {
         stage('Deploy') 
 	     {
             steps 
@@ -28,8 +24,6 @@ pipeline
                 echo 'Deploying it to Pre-prod for UAT'
             	}
              }
-          }
-   stages {
         stage('Production') 
 	     {
             steps 
