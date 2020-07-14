@@ -11,9 +11,9 @@ public class ElementsObjects {
 	WebDriver driver;
 
 	By Elementclick = By.xpath("//div[@class='category-cards']/div[1]");
-	By WebTableClick = By.xpath("//div[@class='element-group']/div[1]/ul/li[4]");
+	By WebTableClick = By.xpath("//span[text()='Web Tables']");
 	By addrecordclick = By.id("addNewRecordButton");
-	By columnNameDep = By.xpath("//div[@class='rt-tr']/div[6]");
+	By columnNameDep = By.xpath("//div[@class='rt-tr']/div[6]"); 
 	By columnNameAge = By.xpath("//div[@class='rt-tbody']/div/div/div[3]");
 	By homescreenLink = By.xpath("//a[@href= 'https://demoqa.com']");
 
@@ -24,7 +24,7 @@ public class ElementsObjects {
 	public WebElement HomeElementclick() {
 
 		return driver.findElement(Elementclick);
-	}
+	} 
 
 	public WebElement Webclick() {
 
