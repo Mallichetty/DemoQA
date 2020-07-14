@@ -7,7 +7,7 @@ pipeline
 	     {
             steps 
 		{
-                mvn compile
+                bat 'mvn compile'
             	}
              }
         stage('Test') 
