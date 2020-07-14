@@ -1,5 +1,7 @@
 package test;
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,22 +32,23 @@ public class ElementsObjectTest extends Base
 {
 	public static Logger log = LogManager.getLogger(ElementsObjectTest.class.getName());
 
+	
+
 	@BeforeTest
 	public void urlLogin() throws IOException {
 		driver = browserInvocation();
 		log.info("Driver is invoked");
-		driver.manage().window().maximize();
+		// driver.manage().window().maximize();
 		String url = prop.getProperty("URL");
 		System.out.println(url);
 		driver.get(url);
 		log.info("Navigated to given URL");
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+		driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
 	}
 
-	@Test(enabled = false)
+	@Test(enabled = true, priority = 1)
 	public void ElementsClick() throws IOException {
-		ElementsObjects EO = new ElementsObjects(driver); 
+		ElementsObjects EO = new ElementsObjects(driver);
 		EO.HomeElementclick().click();
 		log.info("Element clicked");
 		Actions A = new Actions(driver);
@@ -60,43 +63,43 @@ public class ElementsObjectTest extends Base
 		EO.HomePagelink().click();
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = true, priority = 2)
 	public void AlertsClick() {
-
 		AlertsObject AO = new AlertsObject(driver);
-		
 		AO.HomeAlertclick().click();
 		AO.bWindowClick().click();
 		AO.NewTabCLick().click();
 		String current = driver.getWindowHandle();
 		Set<String> handle = driver.getWindowHandles();
-		for (String i : handle)
-		{
-			if(!i.equalsIgnoreCase(current)) 
-			driver.switchTo().window(i);
+		for (String i : handle) {
+			if (!i.equalsIgnoreCase(current))
+				driver.switchTo().window(i);
 		}
 		System.out.println(AO.sampleTabOpen().getText());
-		//driver.close();
+		driver.close();
 		driver.switchTo().window(current);
 		AO.NewWindowClick();
 		Set<String> handle1 = driver.getWindowHandles();
-		for (String j :handle1)
-		{
-			if(!j.equalsIgnoreCase(current))
-			{
+		for (String j : handle1) {
+			if (!j.equalsIgnoreCase(current)) {
 				driver.switchTo().window(j);
 				driver.manage().window().maximize();
+				// driver.close();
 			}
 		}
 		System.out.println(AO.sampleTabOpen().getText());
 		driver.switchTo().window(current);
 		AO.NewWindowMessageClick();
+		// driver.close();
+		driver.switchTo().window(current);
 	}
 
-	@Test(enabled = false)
+	@Test(enabled = true, priority = 4)
 	public void Forms() throws IOException {
+		
 		FormsObjects FO = new FormsObjects(driver);
 		driver.manage().window().maximize();
+		FO.HomePagelink().click();
 		FO.HomeFormclick().click();
 		log.info("Navigated to Homescreen");
 		FO.FormClick().click();
@@ -149,19 +152,36 @@ public class ElementsObjectTest extends Base
 		Actions a = new Actions(driver);
 		a.sendKeys(Keys.PAGE_DOWN).build().perform();
 		ArrayList<String> values4 = FO.getData("Address");
-		FO.Addressclick().sendKeys(values4.get(1)+" , "+values4.get(2));
+		FO.Addressclick().sendKeys(values4.get(1) + " , " + values4.get(2));
 		log.info("Address entered");
 		FO.DDClick().click();
 		ww.until(ExpectedConditions.elementToBeClickable(FO.DynamicDDClick()));
-		//FO.selectState();
-		FO.DynamicDDClick().sendKeys("Uttar Pradesh",Keys.ENTER);
+		// FO.selectState();
+		FO.DynamicDDClick().sendKeys("Uttar Pradesh", Keys.ENTER);
 		ww.until(ExpectedConditions.elementToBeClickable(FO.DynamicDDCitySelect()));
-		FO.DynamicDDCitySelect().sendKeys("Agra",Keys.ENTER);
+		FO.DynamicDDCitySelect().sendKeys("Agra", Keys.ENTER);
 		log.info("City Selected");
 		FO.Submission().click();
 		log.info("form Submitted");
-		
-		
+	}
+
+	@Test(enabled = true, priority = 3)
+	public void Frames() throws Throwable {
+		AlertsObject AO = new AlertsObject(driver);
+		Actions a = new Actions(driver);
+		AO.HomePagelink().click();
+		a.moveToElement(AO.HomeAlertclick());
+		AO.HomeAlertclick().click();
+		Robot r = new Robot();
+		r.mouseWheel(50);
+		AO.FrameClick();
+		log.info("Switched to Frames");
+		AO.GetFrame1Text();
+		driver.switchTo().defaultContent();
+		r.mouseWheel(50);
+		AO.GetFrame2text();
+		r.keyPress(KeyEvent.VK_PAGE_UP);
+		driver.switchTo().defaultContent();
 	}
 
 	@AfterTest

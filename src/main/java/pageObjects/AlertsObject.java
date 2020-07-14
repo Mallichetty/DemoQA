@@ -15,6 +15,8 @@ public class AlertsObject
 	By SampleTab = By.id("sampleHeading");
 	By NewWindow = By.id("windowButton");
 	By NewWindowMessage = By.id("messageWindowButton");
+	By homescreenLink = By.xpath("//a[@href= 'https://demoqa.com']");
+	By Frames = By.xpath("//span[text()='Frames']");
 	
 	public AlertsObject(WebDriver driver) {
 		this.driver = driver;
@@ -56,6 +58,49 @@ public class AlertsObject
 	}
 		catch(Exception e) {
 			
+		}
+	}
+	public WebElement HomePagelink()
+	{
+		return driver.findElement(homescreenLink);
+	}
+	
+	public void FrameClick()
+	{
+		try
+		{
+			driver.findElement(Frames).click();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error frame didnt Clicked ");
+		}
+	}
+	
+	public void GetFrame1Text() throws Throwable
+	{
+		try 
+		{
+		driver.switchTo().frame("frame1");
+		System.out.println(driver.findElement(By.id("sampleHeading")).getText()+"alerts");
+		}
+		catch(Exception e )
+		{
+			System.out.println("Error frame text didnt captured ");
+		}
+		
+	}
+	
+	public void GetFrame2text() throws Throwable
+	{
+		try
+		{
+			driver.switchTo().frame("frame2");
+			System.out.println(driver.findElement(By.id("sampleHeading")).getText() + "alerts 2");
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error frame text 2 didnt captured ");
 		}
 	}
 }

@@ -18,6 +18,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class FormsObjects {
 	WebDriver driver;
+	By homescreenLink = By.xpath("//a[@href= 'https://demoqa.com']");
 	By Fclick = By.xpath("//div[@class='category-cards']/div[2]");
 	By Form = By.xpath("//div[text()='Forms']"); 
 	By PracticeForm = By.xpath("//*[text()='Practice Form']");
@@ -45,6 +46,10 @@ public class FormsObjects {
 		this.driver = driver;
 	}
 
+	public WebElement HomePagelink()
+	{
+		return driver.findElement(homescreenLink);
+	}
 	public WebElement HomeFormclick() {
 		return driver.findElement(Fclick);
 	}
