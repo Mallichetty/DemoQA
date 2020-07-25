@@ -77,7 +77,7 @@ public class AlertsObject
 		}
 	}
 	
-	public void GetFrame1Text() throws Throwable
+	public void GetFrame1Text() throws Exception , Throwable
 	{
 		try 
 		{

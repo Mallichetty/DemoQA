@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2020-07-16T07:05:00Z" name="Default suite" finished-at="2020-07-16T07:07:21Z" duration-ms="141270">
+    <groups>
+    </groups>
+    <test started-at="2020-07-16T07:05:00Z" name="Default test" finished-at="2020-07-16T07:07:21Z" duration-ms="141270">
+      <class name="test.ElementsObjectTest">
+        <test-method is-config="true" signature="urlLogin()[pri:0, instance:test.ElementsObjectTest@7ca33c24]" started-at="2020-07-16T07:05:00Z" name="urlLogin" finished-at="2020-07-16T07:05:15Z" duration-ms="14675" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- urlLogin -->
+        <test-method signature="ElementsClick()[pri:1, instance:test.ElementsObjectTest@7ca33c24]" started-at="2020-07-16T07:05:15Z" name="ElementsClick" finished-at="2020-07-16T07:05:19Z" duration-ms="4070" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ElementsClick -->
+        <test-method signature="AlertsClick()[pri:2, instance:test.ElementsObjectTest@7ca33c24]" started-at="2020-07-16T07:05:19Z" name="AlertsClick" finished-at="2020-07-16T07:05:27Z" duration-ms="7232" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AlertsClick -->
+        <test-method signature="Frames()[pri:3, instance:test.ElementsObjectTest@7ca33c24]" started-at="2020-07-16T07:05:27Z" name="Frames" finished-at="2020-07-16T07:07:13Z" duration-ms="105544" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Frames -->
+        <test-method signature="Forms()[pri:4, instance:test.ElementsObjectTest@7ca33c24]" started-at="2020-07-16T07:07:13Z" name="Forms" finished-at="2020-07-16T07:07:21Z" duration-ms="7953" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Forms -->
+        <test-method is-config="true" signature="browserquit()[pri:0, instance:test.ElementsObjectTest@7ca33c24]" started-at="2020-07-16T07:07:21Z" name="browserquit" finished-at="2020-07-16T07:07:21Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browserquit -->
+      </class> <!-- test.ElementsObjectTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

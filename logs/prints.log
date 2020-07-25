@@ -1,0 +1,3 @@
+12:37:21.374 [main] INFO  test.ElementsObjectTest - form Submitted
+12:37:21.383 [main] INFO  resources.Base - ***** Success Forms test has passed *****
+12:37:21.856 [main] INFO  test.ElementsObjectTest - Browser is closed

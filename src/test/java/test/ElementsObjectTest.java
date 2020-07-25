@@ -173,7 +173,7 @@ public class ElementsObjectTest extends Base
 		a.moveToElement(AO.HomeAlertclick());
 		AO.HomeAlertclick().click();
 		Robot r = new Robot();
-		r.mouseWheel(50);
+		r.keyPress(KeyEvent.VK_PAGE_DOWN);
 		AO.FrameClick();
 		log.info("Switched to Frames");
 		AO.GetFrame1Text();
