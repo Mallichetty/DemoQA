@@ -1,8 +1,0 @@
-12:37:18.472 [main] INFO  test.ElementsObjectTest - Mobilenumber added
-12:37:19.052 [main] INFO  test.ElementsObjectTest - Month Selected
-12:37:19.197 [main] INFO  test.ElementsObjectTest - Year Selected
-12:37:19.474 [main] INFO  test.ElementsObjectTest - Date Selected
-12:37:20.080 [main] INFO  test.ElementsObjectTest - Subjects Entered
-12:37:20.298 [main] INFO  test.ElementsObjectTest - Checkboxes selected
-12:37:20.594 [main] INFO  test.ElementsObjectTest - Address entered
-12:37:21.264 [main] INFO  test.ElementsObjectTest - City Selected

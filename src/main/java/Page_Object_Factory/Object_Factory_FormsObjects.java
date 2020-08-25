@@ -1,4 +1,4 @@
-package pageObjects;
+package Page_Object_Factory;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,12 +16,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class FormsObjects {
-	WebDriver driver;
+import resources.Base;
+
+public class Object_Factory_FormsObjects extends Base {
 	By homescreenLink = By.xpath("//a[@href= 'https://demoqa.com']");
 	By Fclick = By.xpath("//div[@class='category-cards']/div[2]");
 	By Form = By.xpath("//div[text()='Forms']"); 
-	By PracticeForm = By.xpath("//*[text()='Practice Form']");
+	By PracticeForm = By.xpath("//span[text()='Practice Form']");
 	By FirstNameTextBox = By.id("firstName");
 	By LastNameTextBox = By.id("lastName");
 	By EmailTextBox = By.id("userEmail");
@@ -42,9 +43,7 @@ public class FormsObjects {
 	By DynamicDDCity = By.xpath("//input[@id='react-select-4-input']");
 	By SubmitClick = By.cssSelector("#submit");
 
-	public FormsObjects(WebDriver driver) {
-		this.driver = driver;
-	}
+	
 
 	public WebElement HomePagelink()
 	{
@@ -62,46 +61,7 @@ public class FormsObjects {
 		return driver.findElement(PracticeForm);
 	}
 
-	public ArrayList<String> getData(String FieldNameValue) throws IOException {
-		ArrayList<String> al = new ArrayList<String>();
-		FileInputStream FIS = new FileInputStream("C:\\Users\\Admin\\Desktop\\DataDriven.xlsx");
-		XSSFWorkbook wb = new XSSFWorkbook(FIS);
-		int Sheets = wb.getNumberOfSheets();
-		for (int i = 0; i < Sheets; i++) {
-			if (wb.getSheetName(i).equalsIgnoreCase("testData")) {
-				XSSFSheet workingSheet = wb.getSheetAt(i);
-				Iterator<Row> row = workingSheet.iterator();
-				Row firstrow = row.next();
-				Iterator<Cell> ci = firstrow.cellIterator();
-				int k = 0;
-				int columnNumber = 0;
-				while (ci.hasNext()) {
-					Cell column = ci.next();
-					if (column.getStringCellValue().equalsIgnoreCase("FieldName")) {
-						k = columnNumber;
-					}
-					k++;
-				}
-
-				while (row.hasNext()) {
-					Row rows = row.next();
-					if (rows.getCell(columnNumber).getStringCellValue().equalsIgnoreCase(FieldNameValue)) {
-						Iterator<Cell> NameField = rows.cellIterator();
-						while (NameField.hasNext()) {
-							al.add(NameField.next().getStringCellValue());
-						}
-						System.out.println(al);
-					}
-
-				}
-			}
-
-		}
-		return al;
-
-	}
-
-	public WebElement FirstNameTextBox() {
+		public WebElement FirstNameTextBox() {
 		return driver.findElement(FirstNameTextBox);
 	}
 	
